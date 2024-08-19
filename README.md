@@ -60,10 +60,10 @@ docker run -d -p 8069:8069 --name odoo17-container \
   odoo17-img-with-services
 ```
 
-Explanation:
+**Explanation:**
 
 * `-p 8069:8069`: Maps port 8069 on the container to port 8069 on your Windows machine. You will access Odoo at `http://localhost:8069`.
-* `-v` C:/Users/yourusername/Desktop/odoo-data:/data`: Maps your host directory (`C:/Users/yourusername/Desktop/odoo-data`) to the container's `/data` directory. This will store PostgreSQL data, Odoo logs, and configuration files in a single location on your Windows machine.
+* `-v C:/Users/yourusername/Desktop/odoo-data:/data`: Maps your host directory (`C:/Users/yourusername/Desktop/odoo-data`) to the container's `/data` directory. This will store PostgreSQL data, Odoo logs, and configuration files in a single location on your Windows machine.
 * `odoo17-img-with-services`: The Docker image that runs Odoo, PostgreSQL, and Supervisor.
 
 ### Step 3: Access Odoo
@@ -95,7 +95,7 @@ docker run -d -p 8069:8069 --name odoo17-container \
   odoo17-img-with-services
 ```
 
-Explanation:
+**Explanation:**
 * `-p 8069:8069`: Maps port `8069` on the container to port `8069` on your VPS. You will access Odoo at `http://<your-vps-ip>:8069`.
 * `-v /path/on/host/data:/data`: Maps your host directory on the VPS (`/path/on/host/data`) to the container's `/data` directory. This will store PostgreSQL data, Odoo logs, and configuration files in a single location on your VPS.
 
