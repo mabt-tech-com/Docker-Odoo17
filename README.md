@@ -37,8 +37,8 @@ CMD service postgresql start && \
 This Dockerfile does the following:
 
 * Installs PostgreSQL and Supervisor (if needed).
-* Exposes port 8069 for Odoo’s web interface.
-* Defines a single volume (/data) where PostgreSQL data, Odoo logs, and configuration files will be stored.
+* Exposes port `8069` for Odoo’s web interface.
+* Defines a single volume (`/data`) where PostgreSQL data, Odoo logs, and configuration files will be stored.
 * Starts PostgreSQL, Supervisor, and Odoo when the container is run.
 
 
@@ -61,9 +61,10 @@ docker run -d -p 8069:8069 --name odoo17-container \
 ```
 
 Explanation:
--p 8069:8069: Maps port 8069 on the container to port 8069 on your Windows machine. You will access Odoo at http://localhost:8069.
--v C:/Users/yourusername/Desktop/odoo-data:/data: Maps your host directory (C:/Users/yourusername/Desktop/odoo-data) to the container's /data directory. This will store PostgreSQL data, Odoo logs, and configuration files in a single location on your Windows machine.
-odoo17-img-with-services: The Docker image that runs Odoo, PostgreSQL, and Supervisor.
+
+* `-p 8069:8069`: Maps port 8069 on the container to port 8069 on your Windows machine. You will access Odoo at `http://localhost:8069`.
+* `-v` C:/Users/yourusername/Desktop/odoo-data:/data`: Maps your host directory (`C:/Users/yourusername/Desktop/odoo-data`) to the container's `/data` directory. This will store PostgreSQL data, Odoo logs, and configuration files in a single location on your Windows machine.
+* `odoo17-img-with-services`: The Docker image that runs Odoo, PostgreSQL, and Supervisor.
 
 ### Step 3: Access Odoo
 After the container is running, open your web browser and navigate to:
@@ -95,9 +96,10 @@ docker run -d -p 8069:8069 --name odoo17-container \
 ```
 
 Explanation:
--p 8069:8069: Maps port 8069 on the container to port 8069 on your VPS. You will access Odoo at http://<your-vps-ip>:8069.
--v /path/on/host/data:/data: Maps your host directory on the VPS (/path/on/host/data) to the container's /data directory. This will store PostgreSQL data, Odoo logs, and configuration files in a single location on your VPS.
-Step 3: Access Odoo
+* `-p 8069:8069`: Maps port `8069` on the container to port `8069` on your VPS. You will access Odoo at `http://<your-vps-ip>:8069`.
+* `-v /path/on/host/data:/data`: Maps your host directory on the VPS (`/path/on/host/data`) to the container's `/data` directory. This will store PostgreSQL data, Odoo logs, and configuration files in a single location on your VPS.
+
+### Step 3: Access Odoo
 Once the container is running, access Odoo by opening your browser and navigating to:
 
 ```
@@ -128,6 +130,11 @@ docker logs odoo17-container
 
 This will provide details about what might have gone wrong during startup.
 
+### File Permissions
+If you encounter permission issues accessing the files in the volume, ensure that the permissions on the host directory are set correctly. You may need to adjust file permissions or ownership.
+
+## Conclusion
+This setup allows you to run Odoo in a Docker container while persisting important files such as logs, configuration, and databases using a single volume. This makes it easy to access and manage files from both Windows and Ubuntu Server VPS.
 
 
 
