@@ -44,14 +44,14 @@ This Dockerfile does the following:
 
 ## Running the Container on Docker Desktop (Windows)
 
-## Step 1: Prepare the Host Directory
+### Step 1: Prepare the Host Directory
 Create a directory on your Windows machine that will serve as the persistent volume for the container. For example:
 
 ```
 C:/Users/yourusername/Desktop/odoo-data
 ```
 
-## Step 2: Run the Container
+### Step 2: Run the Container
 Use the following command to run the container with the volume mapped to your host directory:
 
 ```
@@ -65,7 +65,7 @@ Explanation:
 -v C:/Users/yourusername/Desktop/odoo-data:/data: Maps your host directory (C:/Users/yourusername/Desktop/odoo-data) to the container's /data directory. This will store PostgreSQL data, Odoo logs, and configuration files in a single location on your Windows machine.
 odoo17-img-with-services: The Docker image that runs Odoo, PostgreSQL, and Supervisor.
 
-## Step 3: Access Odoo
+### Step 3: Access Odoo
 After the container is running, open your web browser and navigate to:
 
 ``` 
@@ -74,9 +74,9 @@ http://localhost:8069
 
 You should see the Odoo web interface.
 
-Running the Container on Ubuntu Server VPS
+## Running the Container on Ubuntu Server VPS
 
-## Step 1: Prepare the Host Directory
+### Step 1: Prepare the Host Directory
 
 Create a directory on your Ubuntu VPS that will serve as the persistent volume for the container. For example:
 
@@ -84,7 +84,7 @@ Create a directory on your Ubuntu VPS that will serve as the persistent volume f
 mkdir -p /path/on/host/data
 ```
 
-## Step 2: Run the Container
+### Step 2: Run the Container
 
 Use the following command to run the container on your Ubuntu VPS:
 
@@ -106,19 +106,19 @@ http://<your-vps-ip>:8069
 
 You should see the Odoo web interface.
 
-Understanding the Volume Mapping
-The -v flag maps a directory on your host machine to a directory inside the Docker container. This allows you to persist files across container restarts, and makes it easier to access or manage these files.
+## Understanding the Volume Mapping
+The `-v` flag maps a directory on your host machine to a directory inside the **Docker container**. This allows you to persist files across container restarts, and makes it easier to access or manage these files.
 
-On Windows: The host directory might look like C:/Users/yourusername/Desktop/odoo-data.
-On Ubuntu VPS: The host directory might look like /path/on/host/data.
-Inside the container, the mapped directory is /data, and it contains:
+* **On Windows:** The host directory might look like `C:/Users/yourusername/Desktop/odoo-data`.
+* **On Ubuntu VPS:** The host directory might look like `/path/on/host/data`.
+Inside the container, the mapped directory is `/data`, and it contains:
 
-/data/postgresql: PostgreSQL data for your Odoo database.
-/data/odoo17: Odoo log files.
-/data/config: Configuration files for Odoo.
+* `/data/postgresql`: PostgreSQL data for your Odoo database.
+* `/data/odoo17`: Odoo log files.
+* `/data/config`: Configuration files for Odoo.
 This setup consolidates everything into a single volume, making backups and management much simpler.
 
-Troubleshooting
+## Troubleshooting
 Container Exits Immediately After Starting
 If the container exits immediately, check the logs using:
 
