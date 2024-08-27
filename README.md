@@ -213,7 +213,7 @@ Files inside container and thier paths :
 /var/log/odoo17
 ```
 
-### odoo 17 config file :
+### odoo 17 config file (`/etc/supervisor/conf.d/odoo17.conf`) : 
 
 ```
 admin_password = admin
